@@ -496,7 +496,7 @@ static NSOperationQueue *delegateQueue;
 
                 if ([self.webView respondsToSelector:wkWebViewSelector]) {
                     dispatch_async(dispatch_get_main_queue(), ^(void){
-                        NSURL *readAccessUrl = [components.URL URLByDeletingLastPathComponent];
+                        NSURL *readAccessUrl = [NSURL fileURLWithPath:libraryDirectory];
                         NSLog(@"Reloading the WKWebView.");
                         SEL wkWebViewReloadSelector = NSSelectorFromString(@"reload");
                         ((id (*)(id, SEL))objc_msgSend)(self.webView, wkWebViewReloadSelector);
