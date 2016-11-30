@@ -411,19 +411,19 @@ static NSOperationQueue *delegateQueue;
     if (self.ignore_deploy) {
         NSLog(@"ignore deploy");
     }
-
+    
     NSLog(@"ignore version: %@", ignore);
     if (![uuid isEqualToString:@""] && !self.ignore_deploy && ![uuid isEqualToString:ignore]) {
         dispatch_async(self.serialQueue, ^{
             if ( uuid != nil && ![self.currentUUID isEqualToString: uuid] ) {
                 NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
                 NSString *libraryDirectory = [paths objectAtIndex:0];
-                NSString *query = [NSString stringWithFormat:@"cordova_js_bootstrap_resource=%@", self.cordova_js_resource];
+//                NSString *query = [NSString stringWithFormat:@"cordova_js_bootstrap_resource=%@", self.cordova_js_resource];
 
                 NSURLComponents *components = [NSURLComponents new];
                 components.scheme = @"file";
                 components.path = [NSString stringWithFormat:@"%@/%@/index.html", libraryDirectory, uuid];
-                components.query = query;
+//                components.query = query;
 
                 self.currentUUID = uuid;
 
